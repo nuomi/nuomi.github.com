@@ -14,3 +14,7 @@ tags:
 ##社区的重要特质：归属感
 
 The reason why Ben was so involved in LugRadio, why Neil ran the Linux User Group meeting, and why thousands of other community members around the world get together, comes down to one simple word: belonging.
+
+...
+
+These interactions, and the feeling of belonging that they produce, are generated from a distinctive kind of economy: a social economy.
