@@ -1,6 +1,6 @@
 --- 
 layout: post
-title: Python程序内存优化工具
+title: Python程序内存优化工具介绍
 date: 2012-07-03 15:19:16
 categories:
     - programming
@@ -29,7 +29,7 @@ This gives you some output like this:
 
 ##Dowser
 
-[Dowser](http://pypi.python.org/pypi/memory_profiler)is ONLY for cherrypy.
+[Dowser](http://pypi.python.org/pypi/memory_profiler) is ONLY for cherrypy.
 
 You import memdebug, and call memdebug.start. That's all.
 
@@ -61,5 +61,11 @@ After decorating your function with @profile and running your code with the -m m
          6    166.20 MB  152.59 MB       b = [2] * (2 * 10 ** 7)
          7     13.61 MB -152.59 MB       del b
          8     13.61 MB    0.00 MB       return a
+
+The first column represents the line number of the code that has been profiled, the second column (Mem usage) the memory usage of the Python interpreter after that line has been executed. The third column (Increment) represents the difference in memory of the current line with respect to the last one. The last column (Line Contents) prints the code that has been profiled.
+
+Q: How accurate are the results ?
+
+A: This module gets the memory consumption by querying the operating system kernel about the ammount of memory the current process has allocated, which might be slightly different from the ammount of memory that is actually used by the Python interpreter. For this reason, the output is only an approximation, and might vary between runs.
 
 
