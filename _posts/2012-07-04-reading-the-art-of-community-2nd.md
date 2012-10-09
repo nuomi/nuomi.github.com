@@ -3,7 +3,7 @@ layout: post
 title: 读书笔记 the art of community 2nd
 date: 2012-07-04 01:27:19
 categories:
-    - 
+    - reading
 tags:
     -
 ---
