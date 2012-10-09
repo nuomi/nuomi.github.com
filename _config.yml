@@ -3,11 +3,11 @@ permalink: /:year/:month/:day/:title
 title: Life In a Terminal
 url: 
 subscribe:
-exclude: [ README.md, newpost.rb ]
+exclude: [ README README.md, newpost.rb ]
 domain:
 author: nuomi
 email: newchar@gmail.com
-auto: true
+auto: false
 twitterID: nuomi
 googleAnalyticsID: 
 disqusShortname: 
