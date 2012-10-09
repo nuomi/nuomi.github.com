@@ -3,9 +3,13 @@ layout: post
 title: 读书笔记 the art of community 2nd
 date: 2012-07-10 00:39:45
 categories:
-    - 
+    - reading
 tags:
-    -
+    - reading
+    - community
+    - open-source
+    - clip
+    - digest
 ---
 
 

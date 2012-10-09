@@ -5,7 +5,11 @@ date: 2012-07-04 01:27:19
 categories:
     - reading
 tags:
-    -
+    - reading
+    - community
+    - open-source
+    - clip
+    - digest
 ---
 ##The Basis of Communication
 
