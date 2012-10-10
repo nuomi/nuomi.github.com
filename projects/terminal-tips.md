@@ -6,7 +6,7 @@ description: ""
 ---
 {% include JB/setup %}
 
-# tmux
+# Tmux
 
 ## Use terminal scrollbar with tmux
 
@@ -33,3 +33,11 @@ and this can usually be set in the preferences of your terminal program (ie: For
 The end result is that the overflow ends up in the terminal's scrollback buffer instead of disappearing. Of course, since this is one static buffer, things will get messy as you switch between screen or tmux windows, but this is handy for quickly flicking up to see the output of an ls command or the such.
 
 from [ http://superuser.com/questions/310251/use-terminal-scrollbar-with-tmux ](http://superuser.com/questions/310251/use-terminal-scrollbar-with-tmux)
+
+# Zsh
+
+# Offlineimap & mutt
+
+# Change Capslock to ctrl
+
+# Awesome window manager
