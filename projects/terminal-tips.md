@@ -36,6 +36,23 @@ from [ http://superuser.com/questions/310251/use-terminal-scrollbar-with-tmux ](
 
 # Zsh
 
+## oh-my-zsh
+
+A community-driven framework for managing your zsh configuration. Includes 40+ optional plugins (rails, git, OSX, hub, capistrano, brew, ant, macports, etc), over 80 terminal themes to spice up your morning, and an auto-update tool so that makes it easy to keep up with the latest updates from the community. — Read more
+http://twitter.com/ohmyzsh
+
+### setup
+
+oh-my-zsh should work with any recent release of zsh, the minimum recommended version is 4.3.9.
+
+#### via `curl`
+
+`curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh`
+
+#### via `wget`
+
+`wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh`
+
 # Offlineimap & mutt
 
 # Change Capslock to ctrl

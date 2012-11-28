@@ -5,3 +5,9 @@ description: ""
 group: projects
 ---
 {% include JB/setup %}
+
+<ul>
+{% assign pages_list = site.pages %}
+{% assign group = 'android' %}
+{% include JB/pages_list %}
+</ul>
