@@ -42,6 +42,13 @@ ClockworkMod recovery has been developed by Koushik Dutta (also known as Koush) 
 
 CyanogenMod is an aftermarket firmware for a number of cell phones based on the open-source Android operating system. It offers features not found in the official Android based firmwares of vendors of these cell phones.
 
+#AOSP
+
+AOKP stands for Android Open Kang Project. It is a custom ROM distribution for many Android devices. The name is a play on the word “kang” and AOSP (Android Open Source Project). The name was sort of a joke, but it just stuck, just like our infatuation with unicorns.
+
+#ASOP
+
+Android Open Source Project
 
 #ADB
 
@@ -161,26 +168,18 @@ This will generate 4 tools:
 
 * afptool – Tool to unpack and pack the firmware files
 
-    Command line:
-
         afptool -pack xxx update.img
         afptool -unpack update.img xxx
 
 * img_maker – Tool to create rkimage files (and it seems to convert the old firmware format to the new firmware format)
 
-    Command line:
-
         img_maker [-rk30|-rk29] [loader] [major version] [minor version] [subversion] [old image] [out image]
 
 * img_unpack – A tool to unpack (new format) firmware images
 
-    Command line: 
-
         ./img_unpack <source> <destination>
 
 * mkkrnlimg – Tool to pack and unpack Kernel images (Also part of omegamoon github account in binary form).
-
-    Command line: 
 
         ./mkkrnlimg [-a|-r] <input> <output>
 
@@ -192,3 +191,6 @@ Sorry, if the usage for each tool is not very clear, but it’s just not obvious
 
 Read more: http://www.cnx-software.com/tag/rockchip/#ixzz2DfvsQius
 
+# kernel compile in android source tree
+
+# android bluetooth stack explain
