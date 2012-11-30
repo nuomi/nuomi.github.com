@@ -84,47 +84,111 @@ Select any mods, upload files and submit to kitchen
 
 Kitchen features:
 
-* New ApkTools for better ICS and JB roms support (NEW!)
-* Battery mod for ICS and JB roms (NEW!)
-* Notification window for qhd/hdpi/mdpi/ldpi roms
-* Bootanimations for qhd/hdpi/mdpi/ldpi roms
-* Flashing folders for system files
-* Additional patch to fix images
-* Custom battery for MIUI rom
-* Settings download/upload
-* Support for TouchWiz roms
-* Quick settings tab
-* Lockscreen pattern
-* Lockscreen lense style
-* Lockscreen rotating style
-* Lockscreen sliding tabs
-* Lockscreen icons
-* Custom loading circle
-* Custom list dividers
-* Pulldown background animation
-* Volume and Download bar customization
-* Flashing script for Data++ Roms
-* Popup windows customization
-* Support for stock odexed roms
-* Support for GB roms with Sense
-* Optional Theme preview
-* Overscroll glowing
-* Font packs
-* Supporting Theme Chooser for CM7 roms
-* Enable transparency in status bar for GB roms
-* Supporting Gingerbread roms
-* Edify and Amend installation script
-* Supporting hdpi/mdpi/ldpi roms
-* Patch9 images auto-fix
-* Super Circle Battery with %, version [A-P]
-* Custom style battery, version Z
-* Themed icons for status bar
-* Uni-color icons
-* Customizable notification drop-down window
-* Bootanimation changer
-* Corrected files for popular roms/themes
-* Showing battery % while charging
-* Custom charging animations
-* Windows animations
-* Icons for Notification Power Buttons
+    * New ApkTools for better ICS and JB roms support (NEW!)
+    * Battery mod for ICS and JB roms (NEW!)
+    * Notification window for qhd/hdpi/mdpi/ldpi roms
+    * Bootanimations for qhd/hdpi/mdpi/ldpi roms
+    * Flashing folders for system files
+    * Additional patch to fix images
+    * Custom battery for MIUI rom
+    * Settings download/upload
+    * Support for TouchWiz roms
+    * Quick settings tab
+    * Lockscreen pattern
+    * Lockscreen lense style
+    * Lockscreen rotating style
+    * Lockscreen sliding tabs
+    * Lockscreen icons
+    * Custom loading circle
+    * Custom list dividers
+    * Pulldown background animation
+    * Volume and Download bar customization
+    * Flashing script for Data++ Roms
+    * Popup windows customization
+    * Support for stock odexed roms
+    * Support for GB roms with Sense
+    * Optional Theme preview
+    * Overscroll glowing
+    * Font packs
+    * Supporting Theme Chooser for CM7 roms
+    * Enable transparency in status bar for GB roms
+    * Supporting Gingerbread roms
+    * Edify and Amend installation script
+    * Supporting hdpi/mdpi/ldpi roms
+    * Patch9 images auto-fix
+    * Super Circle Battery with %, version [A-P]
+    * Custom style battery, version Z
+    * Themed icons for status bar
+    * Uni-color icons
+    * Customizable notification drop-down window
+    * Bootanimation changer
+    * Corrected files for popular roms/themes
+    * Showing battery % while charging
+    * Custom charging animations
+    * Windows animations
+    * Icons for Notification Power Buttons
+
+#RK3066 Linux Kernel Compile
+
+install Linaro packages from the [Linaro Toolchain backports PPA](https://launchpad.net/~linaro-maintainers/+archive/toolchain)
+
+    sudo add-apt-repository ppa:linaro-maintainers/toolchain
+    sudo apt-get update
+    sudo apt-get install gcc-arm-linux-gnueabi
+
+    sudo apt-get install uboot-mkimage
+
+download and compile kernel source
+
+    git clone https://github.com/omegamoon/rockchip-rk30xx-mk808.git
+    cd rockchip-rk30xx-mk808
+    make -j 8 CROSS_COMPILE=arm-linux-gnueabi-
+
+    or:
+    make -j 8 CROSS_COMPILE=arm-linux-gnueabi- uImage
+    make -j 8 CROSS_COMPILE=arm-linux-gnueabi- modules
+
+#RK3066 Tools
+
+There are also some tools available for RK29xx & RK3066 (rktools) mainly to modify ROMs which you can retrieve and build as follows:
+
+    git clone https://github.com/rk3066/rk-tools.git
+    cd rk-tools
+    sudo apt-get install libssl-dev libcrypto++-dev
+    make
+
+This will generate 4 tools:
+
+* afptool – Tool to unpack and pack the firmware files
+
+    Command line:
+
+        afptool -pack xxx update.img
+        afptool -unpack update.img xxx
+
+* img_maker – Tool to create rkimage files (and it seems to convert the old firmware format to the new firmware format)
+
+    Command line:
+
+        img_maker [-rk30|-rk29] [loader] [major version] [minor version] [subversion] [old image] [out image]
+
+* img_unpack – A tool to unpack (new format) firmware images
+
+    Command line: 
+
+        ./img_unpack <source> <destination>
+
+* mkkrnlimg – Tool to pack and unpack Kernel images (Also part of omegamoon github account in binary form).
+
+    Command line: 
+
+        ./mkkrnlimg [-a|-r] <input> <output>
+
+Another tools call rkflashtool can be used to reflash the NAND. The source code is here, and it’s for RK29xx / RK28xx processor, but RK3066 modding instructions are available. “This tool uses a low level protocol supported by the internal bootloader of the RK processor. Because of that, this tool doesn’t need anything to be present on NAND flash, and can be used to successfully reflash bricked tablets”. See Arctablet for details.
+
+Finally Romdump allows you to dump RK3066 ROM to an SD card, check Vondroid for details.
+
+Sorry, if the usage for each tool is not very clear, but it’s just not obvious to me either, and I could not find a wiki or tutorial to use them. So if any reader has already worked with those, better descriptions or links to tutorials/wikis are welcome.
+
+Read more: http://www.cnx-software.com/tag/rockchip/#ixzz2DfvsQius
 
