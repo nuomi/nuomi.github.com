@@ -135,6 +135,19 @@ Kitchen features:
     * Windows animations
     * Icons for Notification Power Buttons
 
+#Goldfish Kernel Compile
+
+	git clone https://android.googlesource.com/kernel/goldfish.git goldfish
+	cd goldfish
+
+Put the cross compilation toolchain into your path and also put the tools (emulator, android tools etc) in your path:
+
+	export PATH=$PATH:~/bin:~/bin/src/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin:/root/bin/src/out/host/linux-x86/bin
+	make ARCH=arm goldfish_defconfig
+	make ARCH=arm SUBARCH=arm CROSS_COMPILE=arm-eabi- -j4
+
+[This](http://code.google.com/p/android-kernel-analysis/wiki/KernelBuildErrors) is a good resource on different errors you could encounter. If you get a message “zImage is ready” you are good to load this image into the emulator to have a running emulator.
+
 #RK3066 Linux Kernel Compile
 
 install Linaro packages from the [Linaro Toolchain backports PPA](https://launchpad.net/~linaro-maintainers/+archive/toolchain)
@@ -152,8 +165,8 @@ download and compile kernel source
     make -j 8 CROSS_COMPILE=arm-linux-gnueabi-
 
     or:
-    make -j 8 CROSS_COMPILE=arm-linux-gnueabi- uImage
-    make -j 8 CROSS_COMPILE=arm-linux-gnueabi- modules
+    make uImage -j 8 CROSS_COMPILE=arm-linux-gnueabi-
+    make modules -j 8 CROSS_COMPILE=arm-linux-gnueabi-
 
 #RK3066 Tools
 
@@ -190,6 +203,45 @@ Finally Romdump allows you to dump RK3066 ROM to an SD card, check Vondroid for 
 Sorry, if the usage for each tool is not very clear, but it’s just not obvious to me either, and I could not find a wiki or tutorial to use them. So if any reader has already worked with those, better descriptions or links to tutorials/wikis are welcome.
 
 Read more: http://www.cnx-software.com/tag/rockchip/#ixzz2DfvsQius
+
+# Kernel test in emulator
+
+	export ANDROID_SWT=/root/bin/src/prebuilt/linux-x86_64/swt
+	android list targets
+
+After you get the right ANDROID platform you can issue the following commands:
+
+	android create avd -n my_android1.5 -t 1
+	emulator -kernel ~/bin/kern/kernel-common/goldfish/arch/arm/boot/zImage -show-kernel -verbose @my_android1.5 
+
+Now you should have a running emulator with your shiny new kernel.
+
+# kernel Test on device
+
+# Kernel modules compile
+
+use android-ndk as cross compile toolchain.
+download android ndk for android. and use build/tools/build-platforms.sh to build android-14 toolchain.
+
+download rk3066 kernel. and add -fno-pic of KBUILD_CFLAGS in Makefile
+
+then you can make modules with it.
+
+	#mark the module you want to compile.
+	CROSS_COMPILE=your toolchainpath/android-14/bin/arm-linux-androideabi
+	make menuconfig
+
+	#compile moduls
+	CROSS_COMPILE=your toolchainpath/android-14/bin/arm-linux-androideabi
+	make modules
+
+# Kernel Modules test
+
+	/root/bin/src/out/host/linux-x86/bin/adb shell mount
+	/root/bin/src/out/host/linux-x86/bin/adb push hello.ko /data
+	/root/bin/src/out/host/linux-x86/bin/adb insmod /data/hello.ko
+
+# Test filesystem on device
 
 # kernel compile in android source tree
 
