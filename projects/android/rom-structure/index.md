@@ -8,6 +8,24 @@ description: ""
 
 #hcd file
 
+# Look up partition table of your android device
+
+	$ cat /proc/mtd
+
+this will give you something like:
+
+	mtd0: 00500000 00020000 "boot"
+	mtd1: 00200000 00020000 "misc"
+	mtd2: 00080000 00020000 "splash"
+	mtd3: 00500000 00020000 "recovery"
+	mtd4: 00500000 00020000 "ftm"
+	mtd5: 01a00000 00020000 "hidden"
+	mtd6: 00060000 00020000 "dbgmsk"
+	mtd7: 0a000000 00020000 "system"
+	mtd8: 00200000 00020000 "misc2"
+	mtd9: 05800000 00020000 "cache"
+	mtd10: 0ab80000 00020000 "userdata"
+
 #ueventd.rc
 
 ueventd.rc is the android equvivalent of udev rules, but it scope is very limited. It mentions the permissions and the owner of the newly added file in the system. /ueventd.rc is read by the init deamon itself, and it listens on the netlink socket for events from the kernel. This is similar to how udev deamon listens for the events from the kernel.

@@ -38,6 +38,53 @@ ClockworkMod recovery has been developed by Koushik Dutta (also known as Koush) 
 
 [[REF] CWM - Clockworkmode menu options & Partitions– GENERAL KNOWLEDGE - xda-developers]( http://forum.xda-developers.com/showthread.php?t=1542857)
 
+
+# HBOOT/FASTBOOT/RECOVERY
+
+__HBOOT__ is bootloader. It lives inside NAND's first partition, mtd0 (if partition map is MTD). It is loaded in memory (RAM) when device is switched ON. Its jobs are:
+
+* Check the Hardware.
+* Initialize the Hardware.
+* Start the Operating System (Either Android or Recovery).
+* HBOOT can also support doing more than this like flashing ROMs.
+
+Something More: Nandroid backup and restore don't touch HBOOT.
+
+__HBOOT__ is manufacturer specific term.. generally used by HTC. 
+
+__Fastboot__ is protocol used to update the flash filesystem in Android devices from a host over USB. It allows flashing of unsigned partition images. It is disabled in the production G1 devices since USB support is disabled in the bootloader[1]. This can be changed if you get root on the device. See also [2] Source(s): Android solutions
+
+	usage: fastboot [ <option> ] <command>
+
+	commands:
+	 update <filename>                        reflash device from update.zip
+	 flashall                                 'flash boot' + 'flash system'
+	 flash <partition> [ <filename> ]         write a file to a flash partition
+	 erase <partition>                        erase a flash partition
+	 getvar <variable>                        display a bootloader variable
+	 boot <kernel> [ <ramdisk> ]              download and boot kernel
+	 flash:raw boot <kernel> [ <ramdisk> ]    create bootimage and flash it
+	 devices                                  list all connected devices
+	 reboot                                   reboot device normally
+	 reboot-bootloader                        reboot device into bootloader
+
+	options:
+	 -w                                       erase userdata and cache
+	 -s <serial number>                       specify device serial number
+	 -p <product>                             specify product name
+	 -c <cmdline>                             override kernel commandline
+
+
+Developers who are creating new images to try out very often can remove their boot and recovery images which will force the phone to enter bootloader mode every time you boot. To fix this, you would reflash the boot and recovery images back allowing the phone to boot normally.
+
+	$ fastboot erase boot
+	$ fastboot erase recovery
+
+# CID
+
+
+#SPL
+
 #CyanogenMod
 
 CyanogenMod is an aftermarket firmware for a number of cell phones based on the open-source Android operating system. It offers features not found in the official Android based firmwares of vendors of these cell phones.
@@ -218,6 +265,11 @@ Now you should have a running emulator with your shiny new kernel.
 
 # kernel Test on device
 
+	fastboot boot new_kernel
+
+this temporarily downloads a new kernel and boot using that without touching the boot-loader's own boot.
+
+
 # Kernel modules compile
 
 use android-ndk as cross compile toolchain.
@@ -246,3 +298,57 @@ then you can make modules with it.
 # kernel compile in android source tree
 
 # android bluetooth stack explain
+
+# BACKUP USERDATA, SYSTEM, HIDDEN PARTITIONS
+
+since typical mtd partition table is:
+
+	dev:    size   erasesize  name
+	mtd0: 00500000 00020000 "boot"
+	mtd1: 00200000 00020000 "misc"
+	mtd2: 00080000 00020000 "splash"
+	mtd3: 00500000 00020000 "recovery"
+	mtd4: 00500000 00020000 "ftm"
+	mtd5: 01a00000 00020000 "hidden"
+	mtd6: 00060000 00020000 "dbgmsk"
+	mtd7: 0a000000 00020000 "system"
+	mtd8: 00200000 00020000 "misc2"
+	mtd9: 05800000 00020000 "cache"
+	mtd10: 0ab80000 00020000 "userdata"
+
+so after adb shell:
+
+	# mkdir /sdcard
+	# mount -t vfat /dev/block/mmcblk0p1 /sdcard
+	# mount -t yaffs2 /dev/block/mtdblock7 /system
+	# mkyaffs2image /system /sdcard/system.img
+
+	# mkdir /data
+	# mount -t yaffs2 /dev/block/mtdblock9 /data
+	# mkyaffs2image /data /sdcard/data.img
+
+	# mkdir /hidden
+	# mount -t yaffs2 /dev/block/mtdblock5 /hidden
+	# mkyaffs2image /data /sdcard/hidden.img
+
+
+# RESTORE ROMS BY USING FASTBOOT
+
+__Important: Don't flash hidden partition by using fastboot.If you flash hidden partition by using fastboot, you will get a empty hidden partion.__
+
+Reboot your mobile into fastboot mode, For example, to restore boot partition:
+
+	fastboot flash boot boot.img
+
+and then reboot:
+
+	fastboot reboot
+
+if you want to erase specified partition:
+
+	fastboot erase [partition name]
+
+of boot with specify boot image:
+
+	fastboot boot [image name]
+
