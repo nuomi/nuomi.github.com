@@ -5,8 +5,6 @@ tagline:
 ---
 {% include JB/setup %}
 
-{{ site | debug }}
-
 ##Posts list
 
 <ul class="posts">
