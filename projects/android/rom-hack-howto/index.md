@@ -36,7 +36,7 @@ ClockworkMod recovery has been developed by Koushik Dutta (also known as Koush) 
 
 **CWM options explained:**
 
-[[REF] CWM - Clockworkmode menu options & Partitions– GENERAL KNOWLEDGE - xda-developers]( http://forum.xda-developers.com/showthread.php?t=1542857)
+[REF CWM - Clockworkmode menu options & Partitions– GENERAL KNOWLEDGE - xda-developers]( http://forum.xda-developers.com/showthread.php?t=1542857)
 
 
 # HBOOT/FASTBOOT/RECOVERY
@@ -52,7 +52,7 @@ Something More: Nandroid backup and restore don't touch HBOOT.
 
 __HBOOT__ is manufacturer specific term.. generally used by HTC. 
 
-__Fastboot__ is protocol used to update the flash filesystem in Android devices from a host over USB. It allows flashing of unsigned partition images. It is disabled in the production G1 devices since USB support is disabled in the bootloader[1]. This can be changed if you get root on the device. See also [2] Source(s): Android solutions
+__Fastboot__ is protocol used to update the flash filesystem in Android devices from a host over USB. It allows flashing of unsigned partition images. It is disabled in the production G1 devices since USB support is disabled in the bootloader. This can be changed if you get root on the device.
 
 	usage: fastboot [ <option> ] <command>
 

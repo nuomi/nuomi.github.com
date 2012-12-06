@@ -21,7 +21,7 @@ These interactions, and the feeling of belonging that they produce, are generate
 
 ##Social Capital 社会资本
 
-The first known use of the term social capital (referred to in Robert Putnam’s Bowling Alone: The Collapse and Revival of American Community [Simon & Schuster]) was by L. J. Hanifan, a school supervisor in rural Virginia. Hanifan described social capital as “those tangible substances [that] count for most in the daily lives of people: namely goodwill, fellowship, sympathy, and social intercourse among the individuals and families who make up a social unit....”
+The first known use of the term social capital (referred to in Robert Putnam’s Bowling Alone: The Collapse and Revival of American Community Simon \& Schuster was by L. J. Hanifan, a school supervisor in rural Virginia. Hanifan described social capital as “those tangible substances that count for most in the daily lives of people: namely goodwill, fellowship, sympathy, and social intercourse among the individuals and families who make up a social unit....”
 
 In essence, if a member of your community has a positive approach to another member, her social capital grows, which has a positive impact on that person and the community as a whole. It all sounds a lot like karma, and it is.
 
