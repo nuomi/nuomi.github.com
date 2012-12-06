@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Index"
+title: "Android app dev"
 group: android
 description: ""
 ---
