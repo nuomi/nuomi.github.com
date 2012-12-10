@@ -21,5 +21,11 @@ or the __dir__ parameter could work relatively:
     assign pages_list = site.pages
     assign dir = '.'
 
+update:
+
+writing a url_list helper, work like this:
+
+    assign url_list = URL_PATTERN
+    include nuomi/url_list
 
 
