@@ -34,8 +34,8 @@ img { -ms-interpolation-mode:bicubic; }
 html>body { font-size:16px; }
 p { margin: 0 0 1.5em 0; text-align: justify; }
 
-a { text-decoration: none; color: #339; }
-a:hover { text-decoration: underline; color: #33f; }
+a { text-decoration: none; color: rgb(51, 102, 153); }
+a:hover { text-decoration: underline; rgb(51, 102, 153); }
 a.pdf:before { 
 	margin-right: 1em;
 	content: url(/files/css/icon_pdf.gif); }
@@ -231,8 +231,8 @@ ul.compact li a {
 	display: inline;
 }
 #header ul li a:hover {
-	color: blue;
-	border-bottom: 2px solid blue;
+	/*color: blue;
+	border-bottom: 2px solid blue;*/
 }
 #header .byline {
 	color: silver;
