@@ -6,26 +6,16 @@ description: ""
 ---
 {% include JB/setup %}
 
-A Jekyll Directory Listing Plugin
-========================
+#A Jekyll Directory Listing Plugin
 
 So I need a plugin that will print a list of pages under specific directory. It should worked like this:
 
-    assign pages_list = site.pages
-    assign dir = 'projects'
+    {% assign index_list = URL_PATTERN %}
+    {% include nuomi/index_list %}
 
-make the __pages_list__ helper recognize dir parameter
+in index_list :
 
-or the __dir__ parameter could work relatively:
-
-    assign pages_list = site.pages
-    assign dir = '.'
-
-update:
-
-writing a url_list helper, work like this:
-
-    assign url_list = URL_PATTERN
-    include nuomi/url_list
-
+    {% url_filter page in site.pages url_pattern:. reversed sort_by:title%}
+        <li><a href="{{ BASE_PATH }}{{page.url}}">{{page.title}}</a></li>
+    {% endurl_filter %}
 

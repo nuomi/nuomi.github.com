@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "rom structure explain"
+title: "Android Rom Structure Explain"
 group: android
 description: ""
 ---
